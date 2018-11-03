@@ -1,0 +1,209 @@
+.ng-show{
+	color:red;
+	position:absolute;
+	
+	z-index:1;
+	width:100%;
+	margin-top:3px;
+}
+
+/*.errorMessage{
+	padding:5px;
+	background: red;
+	width:100%;
+	border: 1px solid #FA787E;
+	border-radius:4px;
+}
+
+
+.errorMessage:after, .errorMessage:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.errorMessage:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: red;
+	border-width: 10px;
+	margin-left: -10px;
+}
+.errorMessage:before {
+
+	border-width: 16px;
+	margin-left: -16px;
+}*/
+
+input.ng-invalid.ng-touched {
+	border-bottom: 2px solid #FA787E;
+}
+
+
+
+
+
+.form-control {
+    align-self: flex-end;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: transparent;
+    transition: 240ms;
+}
+
+.form-control:focus::-webkit-input-placeholder {
+    transition: none;
+}
+
+.form-group.focused .form-control::-webkit-input-placeholder {
+    color: #bbb;
+}
+
+
+.radioButtondemoBasicUsage body {
+  padding: 20px; }
+
+.radioButtondemoBasicUsage hr {
+  margin-left: -20px;
+  opacity: 0.3; }
+
+.radioButtondemoBasicUsage md-radio-group {
+  width: 150px; }
+
+.radioButtondemoBasicUsage p:last-child {
+  padding-bottom: 50px; }
+
+.radioButtondemoBasicUsage [ng-controller] {
+  padding: 0 20px; }
+
+.radioButtondemoBasicUsage .radioValue {
+  margin-left: 5px;
+  color: #0f9d58;
+  font-weight: bold;
+  padding: 5px; }
+
+.radioButtondemoBasicUsage md-icon {
+  margin: 0 20px 20px;
+  width: 128px;
+  height: 128px; }
+
+.radioButtondemoBasicUsage .ipsum {
+  color: saddlebrown;
+  font-size: 0.9em; }
+  
+  
+  .form-group {
+  position: relative;
+ /* height: 72px;
+  padding: 16px 0 8px 0;*/ }
+
+.control-label {
+  position: relative;
+  margin: 0;
+  display: block;
+  color: #a7a7a7;
+  font-weight:normal;
+
+/*  line-height: 16px;
+  font-size: 16px;
+  font-weight: 400;*/
+  -webkit-transform: translateY(24px);
+      -ms-transform: translateY(24px);
+          transform: translateY(24px);
+  -webkit-transition: -webkit-transform 0.3s, color 0.3s;
+          transition: transform 0.3s, color 0.3s;
+  -webkit-transform-origin: 0 50%;
+      -ms-transform-origin: 0 50%;
+          transform-origin: 0 50%; }
+
+.form-control {
+  position: relative;
+  display: block;
+  width: 100%;
+  /*height: 32px;
+  padding: 8px 0;
+  line-height: 16px;
+  font-family: Roboto;*/
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  -webkit-appearance: none;
+  outline: none; 
+
+	border-left:none;
+    border-right:none;
+	border-top:none;
+	box-shadow:none;
+	border-radius:0px;
+	padding: 6px 0px;
+
+  }
+
+.form-group::after, .form-group::before {
+  content: '';
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  background-color: #e6e6e6; }
+
+.form-group::after {
+  background-color: #f47920;
+  -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s; }
+.form-control:focus{
+	border-left:none;
+    border-right:none;
+	border-top:none;
+	box-shadow:none;
+	border-radius:0px;
+}
+
+/* Field is activated
+   ========================================================================== */
+.has-label .control-label {
+  -webkit-transform: translateY(0) scale(0.75);
+      -ms-transform: translateY(0) scale(0.75);
+          transform: translateY(0) scale(0.75); }
+
+/* Field is focused
+   ========================================================================== */
+.is-focused .control-label {
+  color: #a7a7a7; }
+
+.form-group.is-focused::after {
+  -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+          transform: scaleX(1); }
+  
+  
+  
+  
+  
+  
+   @media (max-width: 317px) {
+	  
+	
+   }
+   @media (min-width: 480px) {
+	
+   }
+   @media (min-width: 767px) {
+	
+   }
+  
+ @media (min-width: 992px) {
+	 
+ }
+  @media (min-width: 1200px) {
+	   
+  }

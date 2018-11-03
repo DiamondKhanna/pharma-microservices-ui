@@ -1,0 +1,150 @@
+<md-toolbar color="primary">LBG Pharmacy Dashboard</md-toolbar>
+
+<div class="col-xs-12 col-sm-12 m-t-10" *ngIf="screen=='view'">
+  <md-card>
+    <md-card-title>All Medicines</md-card-title>
+    <table>
+      
+      <tbody></tbody>
+    </table>
+    <div class="table-responsive ">
+      <table class="table table-striped" [md2Data]="data" #md2="md2DataTable" [rowsPerPage]="4">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Manufacturer</th>
+            <th>Batch Number</th>
+            <th>Expiration Date</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="md2.data.length == 0">
+            <td colspan="8">No Record Found</td>
+          </tr>
+          <tr *ngFor="let obj of md2.data">
+            <td>{{obj.id}}</td>
+            <td>{{obj.name}}</td>
+            <td>{{obj.manufacturer}}</td>
+            <td>{{obj.batch_number}}</td>
+            <td>{{obj.expiration_date| date: 'dd/MM/yyyy'}}</td>
+            <td>{{obj.price}}</td>
+            <td>{{obj.type}}</td>
+            <td>
+              <md-icon mdTooltip="Edit" class="mat-icon material-icons" role="img" aria-hidden="true" style="cursor: pointer" (click)="edit(obj)">edit</md-icon>
+              <md-icon mdTooltip="Delete" class="mat-icon material-icons" role="img" aria-hidden="true" style="cursor: pointer" (click)="delete(obj)">cancel</md-icon>
+            </td>
+            
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <md2-pagination></md2-pagination>
+            </td>
+            <td colspan="4" class="p-r-0">
+              <button md-raised-button color="primary" class="pull-right " (click)="change_screen('create') ">Add Medicine</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </md-card>
+</div>
+
+<div class="col-xs-12 col-sm-12 m-t-10" *ngIf="screen=='create'">
+    <md-card>
+        <md-card-title>Add Medicine</md-card-title>
+        <div class="row">
+           <form #medicineForm="ngForm"> 
+            <div class="col-xs-12 col-sm-4">
+              <md-input-container [style.width]="'100%'">
+                <input mdInput placeholder="Name" name="name" ngModel >
+              </md-input-container>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <md-input-container [style.width]="'100%'">
+                <input mdInput placeholder="Manufacturer" name="manufacturer" ngModel >
+              </md-input-container>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <md-input-container [style.width]="'100%'">
+                <input mdInput placeholder="Batch Number" name="batch_number" ngModel >
+              </md-input-container>
+            </div> 
+              <div class="col-xs-12 col-sm-4">
+                  <md2-datepicker class="width100" name="expiration_date" placeholder="Expiration Date" ngModel></md2-datepicker>
+                  
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <md-input-container [style.width]="'100%'">
+                    <input mdInput type="number" placeholder="Price" name="price" ngModel >
+                  </md-input-container>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <md-select  [style.width]="'100%'" placeholder="Type" name="type" ngModel>
+                        <md-option value="Capsule">Capsule</md-option>
+                        <md-option value="Tablet">Tablet</md-option>
+                        <md-option value="Syrup">Syrup</md-option>
+                        <md-option value="Gel">Gel</md-option>
+                    </md-select>
+            </div>
+           </form> 
+          <div class="col-xs-12 col-sm-12">
+              <button md-raised-button color="accent" class="pull-right" (click)="save_medicine(medicineForm.value) ">Save</button>              
+              <button md-raised-button color="primary" class="pull-left" (click)="change_screen('view') ">Back</button>             
+          </div>
+        </div>
+    </md-card>
+</div>
+
+<div class="col-xs-12 col-sm-12 m-t-10" *ngIf="screen=='edit'">
+    <md-card>
+        <md-card-title>Edit Medicine</md-card-title>
+        <div class="row">
+           <form #editMedicineForm="ngForm"> 
+            <div class="col-xs-12 col-sm-4">
+              <md-input-container [style.width]="'100%'">
+                <input mdInput placeholder="Name" name="name_edit"  [(ngModel)]="name_edit">
+              </md-input-container>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <md-input-container [style.width]="'100%'">
+                <input mdInput placeholder="Manufacturer" name="manufacturer_edit"  [(ngModel)]="manufacturer_edit">
+              </md-input-container>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <md-input-container [style.width]="'100%'">
+                <input mdInput placeholder="Batch Number" name="batch_no_edit"  [(ngModel)]="batch_no_edit">
+              </md-input-container>
+            </div> 
+              <div class="col-xs-12 col-sm-4">
+                  <!-- <md-input-container [style.width]="'100%'">
+                    <input mdInput placeholder="Expiration Date" name="exp_date_edit" >
+                  </md-input-container> -->
+                  <md2-datepicker class="width100" name="exp_date_edit" [(ngModel)]="exp_date_edit" placeholder="Expiration Date"></md2-datepicker>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <md-input-container [style.width]="'100%'">
+                    <input mdInput type="number" placeholder="Price" name="price_edit" [(ngModel)]="price_edit" >
+                  </md-input-container>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <md-select  [style.width]="'100%'" placeholder="Type" name="type_edit" [(ngModel)]="type_edit">
+                        <md-option value="Capsule">Capsule</md-option>
+                        <md-option value="Tablet">Tablet</md-option>
+                        <md-option value="Syrup">Syrup</md-option>
+                        <md-option value="Gel">Gel</md-option>
+                    </md-select>
+            </div>
+           </form> 
+          <div class="col-xs-12 col-sm-12">
+              <button md-raised-button color="accent" class="pull-right" (click)="update_medicine(editMedicineForm.value) ">Update</button>              
+              <button md-raised-button color="primary" class="pull-left" (click)="change_screen('view') ">Back</button>             
+          </div>
+        </div>
+    </md-card>
+</div>
